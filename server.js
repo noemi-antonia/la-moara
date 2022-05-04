@@ -1,13 +1,24 @@
-const express = require('express')
+const express = require('express');
+const path = require('path');
+const data = require('./data/data');
+
 const app = express()
 const port = 3000
 
-app.use(express.static(__dirname))
+app.use('/static-page',express.static('public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.json(data);
+})
+
+app.get('/class/:id', (req, res) => {
+  const studentId = Number(req.params.id);
+
+  const student = data.filter((student) => student.id === studentId);
+
+  res.send(student);
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 })
