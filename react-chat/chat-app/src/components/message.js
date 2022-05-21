@@ -1,10 +1,8 @@
 const Message = (props) => {
   return (
-    <>
-      <div>
-        {props.sender}: {props.message}
+      <div className="message">
+        {props.sender} <div className="text">{props.message}</div>
       </div>
-    </>
   );
 };
 

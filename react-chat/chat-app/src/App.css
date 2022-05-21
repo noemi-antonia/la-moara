@@ -6,6 +6,7 @@
 body{
     background-color: #e0e0e0;
     padding: 15px;
+    font-size: 13px;
 }
 
 #root{
@@ -16,10 +17,10 @@ body{
 
 .chat-box{
     background-color: white;
-    height: 80vh;
-    width: 70vw;
+    height: 73vh;
     border-radius: 5px 5px 0 0;
-    padding: 15px;
+    padding: 25px;
+    overflow: auto;
 }
 
 .messageForm{
@@ -53,5 +54,52 @@ body{
 
 .messageForm .message-input{
     flex-grow: 9;
-    border-left: 1px solid #ddd;
+}
+.message{
+    padding-bottom: 15px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.message .text{
+    background-color: #efefef;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 15px 15px 15px 0;
+}
+
+.notification{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 200px;
+    padding:10px;
+    background-color:bisque;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.notification span{
+    position: absolute;
+    width:20px;
+    height: 20px;
+    right: 10px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius:5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@media only screen and (min-width:381px){
+    .messageForm .message-input{
+        border-left: 1px solid #ddd;
+    }
+}
+
+@media only screen and (min-width:640px){
+    .chat-box{
+        width: 70vw;
+        height: 76vh;
+    }
 }

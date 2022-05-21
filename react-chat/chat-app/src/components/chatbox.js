@@ -1,19 +1,18 @@
-import Message from "./message";
 import { useState, useEffect } from "react";
+import Message from "./message";
 
 const ChatBox = ({ socket }) => {
   const [messages, setMessages] = useState([]);
 
-  const addMessage = (msg) => {
+  const addMessage = (message) => {
     setMessages((messages) => {
-      return [...messages, msg.messageObj];
+      return [...messages, message];
     });
   };
 
   useEffect(() => {
-    socket.on("received-message", (msg) => {
-      console.log(socket.id + " " + JSON.stringify(msg.messageObj));
-      addMessage(msg);
+    socket.on("received-message", (message) => {
+      addMessage(message);
     });
   }, []);
 

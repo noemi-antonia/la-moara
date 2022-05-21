@@ -1,17 +1,16 @@
 import { io } from "socket.io-client";
+import { useEffect, useState } from "react";
 import ChatBox from "./chatbox";
 import MessageForm from "./messageform";
 import Notification from "./notification";
-import { useEffect, useState } from "react";
 
 const Chat = () => {
-  const [connectedSocket, setConnectedSocket] = useState(null);
+  const [connectedSocket, setConnectedSocket] = useState();
 
   useEffect(() => {
     const socket = io();
-    socket.on("connected", (sda) => {
+    socket.on("connected", () => {
       setConnectedSocket(socket);
-      console.log(socket);
     });
   }, []);
 

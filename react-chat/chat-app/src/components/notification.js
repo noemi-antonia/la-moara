@@ -15,8 +15,12 @@ const Notification = ({ socket }) => {
     });
   }, []);
 
+  const onCloseNotification = () => {
+    setNotified(true);
+  }
+
   if (!notified && sender)
-    return <div className="notification">{sender} a trimis un mesaj!</div>;
+    return <div className="notification">{sender} a trimis un mesaj! <span onClick={onCloseNotification}>x</span></div>;
 };
 
 export default Notification;

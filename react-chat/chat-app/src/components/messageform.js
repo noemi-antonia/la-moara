@@ -2,14 +2,19 @@ import { useState } from "react";
 
 const MessageForm = ({ socket }) => {
   const [messageObj, setMessage] = useState({ sender: "", message: "" });
+  const [isNameReadonly,setNameReadonly] = useState(false);
 
   const sendMessage = () => {
-    socket.emit("new-message", { messageObj });
-    setMessage((messageObj) => {
-      const updatedMessageObj = { ...messageObj };
-      updatedMessageObj.message = "";
-      return updatedMessageObj;
-    });
+    if(!messageObj.sender.trim() || !messageObj.message.trim()) alert("Both input fields must be filled out");
+    else{
+      socket.emit("new-message", messageObj);
+      setNameReadonly(true);
+      setMessage((messageObj) => {
+        const updatedMessageObj = { ...messageObj };
+        updatedMessageObj.message = "";
+        return updatedMessageObj;
+      });
+    }
   };
 
   const handleInputChange = (e) => {
@@ -28,6 +33,7 @@ const MessageForm = ({ socket }) => {
         name="sender"
         placeholder="Enter your name"
         type="text"
+        readOnly={isNameReadonly}
       ></input>
       <input
         value={messageObj.message}
