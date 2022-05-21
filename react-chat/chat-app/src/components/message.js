@@ -1,10 +1,11 @@
-const Message = () => {
-    return (
-        <>
-        <div>Nume:</div>
-        <span>Mesaj</span>
-        </>
-    );
-}
+const Message = (props) => {
+  return (
+    <>
+      <div>
+        {props.sender}: {props.message}
+      </div>
+    </>
+  );
+};
 
 export default Message;

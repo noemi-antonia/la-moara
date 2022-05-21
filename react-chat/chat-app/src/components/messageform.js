@@ -1,32 +1,45 @@
 import { useState } from "react";
 
-const MessageForm = ({socket}) => {
-    const [messages, setMessages] = useState([]);
-    const [messageObj, setMessage] = useState({sender:"", message:""});
+const MessageForm = ({ socket }) => {
+  const [messageObj, setMessage] = useState({ sender: "", message: "" });
 
-    const addMessage = (messageObj) => {
-        setMessages((messages) => {
-            return [...messages, messageObj];
-        });
-    }
+  const sendMessage = () => {
+    socket.emit("new-message", { messageObj });
+    setMessage((messageObj) => {
+      const updatedMessageObj = { ...messageObj };
+      updatedMessageObj.message = "";
+      return updatedMessageObj;
+    });
+  };
 
-    useEffect(() => {
-        socket.on("received-message", (messageObj) => {
-          addMessage(messageObj);
-        });
-      }, []);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setMessage({
+      ...messageObj,
+      [name]: value,
+    });
+  };
 
-    const sendMessage = () => {
-        socket.emit ("new-message", {messageObj});
-    }
-
-    return (
-        <div className="messageForm">
-        <input value={messageObj.sender} placeholder="Enter your name" type="text"></input>
-        <input value={messageObj.message} className="message-input" placeholder="Enter a message" type="text"></input>
-        <button onClick={sendMessage}>Send message!</button>
-        </div>
-    );
-}
+  return (
+    <div className="messageForm">
+      <input
+        value={messageObj.sender}
+        onChange={handleInputChange}
+        name="sender"
+        placeholder="Enter your name"
+        type="text"
+      ></input>
+      <input
+        value={messageObj.message}
+        onChange={handleInputChange}
+        name="message"
+        className="message-input"
+        placeholder="Enter a message"
+        type="text"
+      ></input>
+      <button onClick={sendMessage}>Send message!</button>
+    </div>
+  );
+};
 
 export default MessageForm;
