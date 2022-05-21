@@ -9,7 +9,7 @@ const Exercise3 = () => {
 
     const addColor = (color) => {
         const newColors = [...colors];
-        newColors.push({id: newColors.length > 0 ? (newColors[newColors.length-1].id + 1) : 1 ,colorCode: color});
+        newColors.push({id: newColors.length, colorCode: color});
         setColors(newColors);
     }
 
