@@ -15,91 +15,14 @@ body{
     align-items: center;
 }
 
-.chat-box{
-    background-color: white;
-    height: 73vh;
-    border-radius: 5px 5px 0 0;
-    padding: 25px;
-    overflow: auto;
-}
-
-.messageForm{
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    background-color: #f7f7f7;
-    border-top: 1px solid #ddd;
-    border-radius: 0 0 5px 5px;
-    margin-right: 0;
-}
-
-.messageForm input{
-    height: 40px;
+ input{    height: 40px;
     border:none;
     padding: 0 15px;
     flex-grow: 2;
 }
 
-.messageForm input:focus{
+input:focus{
     outline: none; 
 }
 
-.messageForm button{
-    height: 40px;
-    border: none;
-    padding: 0 15px;
-    cursor: pointer;
-    flex-grow: 1;
-}
 
-.messageForm .message-input{
-    flex-grow: 9;
-}
-.message{
-    padding-bottom: 15px;
-    display: flex;
-    align-items: flex-end;
-}
-
-.message .text{
-    background-color: #efefef;
-    padding: 5px 10px;
-    margin-left: 10px;
-    border-radius: 15px 15px 15px 0;
-}
-
-.notification{
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    width: 200px;
-    padding:10px;
-    background-color:bisque;
-    border-radius: 5px;
-    font-size: 13px;
-}
-
-.notification span{
-    position: absolute;
-    width:20px;
-    height: 20px;
-    right: 10px;
-    background-color: rgba(255,255,255,0.5);
-    border-radius:5px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-@media only screen and (min-width:381px){
-    .messageForm .message-input{
-        border-left: 1px solid #ddd;
-    }
-}
-
-@media only screen and (min-width:640px){
-    .chat-box{
-        width: 70vw;
-        height: 76vh;
-    }
-}

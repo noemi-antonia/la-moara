@@ -1,12 +1,25 @@
+import { io } from "socket.io-client";
+import { useEffect, useState } from "react";
 import "./App.css";
-import Chat from "./components/chat";
+import Form from "./components/form";
+import Answers from "./components/answers";
 
 function App() {
+  const [connectedSocket, setConnectedSocket] = useState();
+
+  useEffect(() => {
+    const socket = io();
+    socket.on("connected", () => {
+      setConnectedSocket(socket);
+    });
+  }, []);
+
+  if (!connectedSocket) return <p>Waiting for connection</p>;
   return (
     <>
-      <h1>Homework 4</h1>
-      <br></br>
-      <Chat />
+    Hello
+    <Form socket={connectedSocket}/>
+    <Answers socket={connectedSocket}/>
     </>
   );
 }
