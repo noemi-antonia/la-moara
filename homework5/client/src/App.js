@@ -16,11 +16,11 @@ function App() {
 
   if (!connectedSocket) return <p>Waiting for connection</p>;
   return (
-    <>
-    Hello
-    <Form socket={connectedSocket}/>
-    <Answers socket={connectedSocket}/>
-    </>
+    <div className="app">
+      <h2>Are you a developer?</h2>
+      <Form socket={connectedSocket}/>
+      <Answers socket={connectedSocket}/>
+    </div>
   );
 }
 
