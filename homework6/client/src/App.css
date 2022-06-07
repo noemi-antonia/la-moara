@@ -1,0 +1,109 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color: #efefef;
+    font-size: 13px;
+}
+
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:20px;
+}
+
+.app>*{
+    margin-bottom: 10px;
+}
+
+.feedback-form{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback-form input{        
+    width: 400px;
+    border-radius: 5px 0 0 5px;
+    resize: none;
+    padding: 10px;
+    border-width: 0;
+}
+
+.feedback-form input:focus{
+    outline: none; 
+}
+
+.feedback-form button{
+    background-color: #e0e0e0;
+    height: 50px;
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.feedback-form button:disabled{
+    cursor: not-allowed;
+}
+
+.board{
+    min-width: 35vw;
+}
+
+.editable-cell, .cell {
+    width: 100%;
+    margin:10px;
+    border-radius: 5px;
+    padding: 15px;
+    aspect-ratio: 1 / 1;
+}
+
+.cell{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.editable-cell{
+    border: 1px dashed black;
+}
+
+.editable-cell:not(.selected-cell):hover::before {
+    content: "+";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    width:100%;
+    height: 100%;
+    color: #9a9a9a;
+    transition: 2s ease-in;
+}
+
+.row{
+    min-height: 220px;
+    min-width: 220px;
+    display: flex;
+}
+
+.editable-cell:not(.selected-cell){
+    cursor: pointer;
+}
+
+.selected-cell{
+    background-color: #d5d5d5;
+}
+
+@media only screen and (max-width: 1600px) {
+    .board{
+        min-width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .board{
+        min-width: 80vw;
+    }
+}
